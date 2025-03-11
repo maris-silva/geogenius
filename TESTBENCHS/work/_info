@@ -1,0 +1,379 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Operador/Documents/prova_mari
+vcomparador_85
+Z0 !s110 1739900531
+!i10b 1
+!s100 bckB8^W=VE]I2a21^PB@D0
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+I5H`jK0;DQ3?z9EG@PAMXn0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dC:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS
+Z4 w1739037293
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/comparador_85.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/comparador_85.v
+!i122 5
+L0 16 14
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1739900531.000000
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/comparador_85.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/comparador_85.v|
+!i113 1
+Z7 o-work work
+Z8 tCvgOpt 0
+vcontador_163
+R0
+!i10b 1
+!s100 cP8RjNkBdY0j>H9cIFc3;3
+R1
+IVR_m@Ul_H_QaPdkNS4_d:1
+R2
+R3
+R4
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/contador_163.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/contador_163.v
+!i122 6
+L0 16 16
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/contador_163.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/contador_163.v|
+!i113 1
+R7
+R8
+vcontador_m
+Z9 !s110 1739900532
+!i10b 1
+!s100 BLMf5@WIC9E7[2]V7T:]00
+R1
+IFCVFg:n`XGL8[UnR6;X3A2
+R2
+R3
+w1739120943
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/contador_m.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/contador_m.v
+!i122 7
+L0 20 37
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/contador_m.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/contador_m.v|
+!i113 1
+R7
+R8
+vedge_detector
+R9
+!i10b 1
+!s100 b=6PQ:nFojW4z?d;AGW=D0
+R1
+I:H:69JANSjgHm752GIhE:2
+R2
+R3
+R4
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/edge_detector.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/edge_detector.v
+!i122 8
+L0 21 23
+R5
+r1
+!s85 0
+31
+Z10 !s108 1739900532.000000
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/edge_detector.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/edge_detector.v|
+!i113 1
+R7
+R8
+vfluxo_de_dados
+R9
+!i10b 1
+!s100 V3N@7a;U6Ga8Lo5[PXcn@3
+R1
+I0BcmzmQM0]XU9iDB:A:f=1
+R2
+R3
+Z11 w1739130427
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/fluxo_de_dados.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/fluxo_de_dados.v
+!i122 9
+L0 2 167
+R5
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/fluxo_de_dados.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/fluxo_de_dados.v|
+!i113 1
+R7
+R8
+vfluxo_de_dados_desafio
+!s110 1739900530
+!i10b 1
+!s100 Rmh5nGfRZ?QnTI4UL`UYM3
+R1
+I4bG@WeoiGHGnk1JW:HC]z0
+R2
+R3
+w1739371918
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/fluxo_de_dados_desafio.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/fluxo_de_dados_desafio.v
+!i122 1
+L0 1 193
+R5
+r1
+!s85 0
+31
+Z12 !s108 1739900530.000000
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/fluxo_de_dados_desafio.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/fluxo_de_dados_desafio.v|
+!i113 1
+R7
+R8
+vhexa7seg
+R9
+!i10b 1
+!s100 ^ldcN:Zl`^?4Tnh8I@Z332
+R1
+IUjKLfAL88:_i5R_bD@Hfa1
+R2
+R3
+R4
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/hexa7seg.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/hexa7seg.v
+!i122 10
+L0 23 38
+R5
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/hexa7seg.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/hexa7seg.v|
+!i113 1
+R7
+R8
+vjogo_desafio_memoria
+R9
+!i10b 1
+!s100 1P1dOZ3CalalPlzzkRo:L0
+R1
+IXC8BB[5_XUoW6L<4LYW1F1
+R2
+R3
+R11
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/jogo_desafio_memoria.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/jogo_desafio_memoria.v
+!i122 11
+Z13 L0 1 150
+R5
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/jogo_desafio_memoria.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/jogo_desafio_memoria.v|
+!i113 1
+R7
+R8
+vjogo_desafio_memoria_desafio
+R0
+!i10b 1
+!s100 Tj6QC=fJKEXQm4dJU1F]51
+R1
+IW40=C1eIHXER:95b03GF;2
+R2
+R3
+w1739368909
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/jogo_desafio_memoria_desafio.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/jogo_desafio_memoria_desafio.v
+!i122 2
+R13
+R5
+r1
+!s85 0
+31
+R12
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/jogo_desafio_memoria_desafio.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/jogo_desafio_memoria_desafio.v|
+!i113 1
+R7
+R8
+vmux2x1
+R9
+!i10b 1
+!s100 M`PWWJioUd<IOY3XDnVS[1
+R1
+IESzR1LBN7IJL?EcZ5_XAY2
+R2
+R3
+R4
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/mux2x1.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/mux2x1.v
+!i122 12
+L0 18 16
+R5
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/mux2x1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/mux2x1.v|
+!i113 1
+R7
+R8
+vregistrador_4
+R9
+!i10b 1
+!s100 45NaE0zN5R1c;nb0e8L`23
+R1
+IN^[O5K5Ub]Z02Po?4QUjD0
+R2
+R3
+R4
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/registrador_4.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/registrador_4.v
+!i122 13
+L0 13 20
+R5
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/registrador_4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/registrador_4.v|
+!i113 1
+R7
+R8
+vsync_rom_16x4
+R9
+!i10b 1
+!s100 Tz6@dY^L3ZzVgc74FVX5T1
+R1
+I;fDVgM92RjnmR;kg`=Z391
+R2
+R3
+R4
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/sync_rom_16x4.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/sync_rom_16x4.v
+!i122 14
+Z14 L0 13 27
+R5
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/sync_rom_16x4.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/sync_rom_16x4.v|
+!i113 1
+R7
+R8
+vsync_rom_16x4_0
+R0
+!i10b 1
+!s100 Xe<M?<^aUVY<FMDCMYZc[1
+R1
+I26<Kh2jVN;jjPfDe@gE6N3
+R2
+R3
+w1739368672
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/sync_rom_16x4_0.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/sync_rom_16x4_0.v
+!i122 3
+R14
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/sync_rom_16x4_0.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/sync_rom_16x4_0.v|
+!i113 1
+R7
+R8
+vsync_rom_16x4_1
+R0
+!i10b 1
+!s100 P>I;H3cnc3Zg``<Gc9KGR1
+R1
+ID]^ainbkN>kKk4FTI>7iY2
+R2
+R3
+w1739369546
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/sync_rom_16x4_1.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/sync_rom_16x4_1.v
+!i122 4
+R14
+R5
+r1
+!s85 0
+31
+R6
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/sync_rom_16x4_1.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/quartus-exp06/sync_rom_16x4_1.v|
+!i113 1
+R7
+R8
+vtb_template_ganha
+!s110 1739903458
+!i10b 1
+!s100 CXTAc9>E9[:P>WJi=QLNU0
+R1
+IkR66;OKRJn^D<lYDi0nX`0
+R2
+R3
+w1739903453
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v
+!i122 21
+L0 5 169
+R5
+r1
+!s85 0
+31
+!s108 1739903458.000000
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v|
+!i113 1
+R7
+R8
+vunidade_controle
+!s110 1739900533
+!i10b 1
+!s100 ?D7?=NaGn=dF;A5gXfGX`3
+R1
+Il?`c3[U1P2CH>1?QZYJd]3
+R2
+R3
+R11
+8C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/unidade_controle.v
+FC:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/unidade_controle.v
+!i122 15
+L0 15 139
+R5
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/unidade_controle.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Operador/Documents/prova_mari/exp7 P1/jogo_desafio_memoria_restored/LabDig1/Exp6/unidade_controle.v|
+!i113 1
+R7
+R8

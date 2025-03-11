@@ -1,0 +1,131 @@
+vsim -gui work.tb_template_ganha
+# vsim -gui work.tb_template_ganha 
+# Start time: 15:03:48 on Feb 18,2025
+# Loading work.tb_template_ganha
+# Loading work.jogo_desafio_memoria_desafio
+# Loading work.fluxo_de_dados_desafio
+# Loading work.contador_163
+# Loading work.comparador_85
+# Loading work.sync_rom_16x4_0
+# Loading work.sync_rom_16x4_1
+# Loading work.contador_m
+# Loading work.registrador_4
+# Loading work.edge_detector
+# Loading work.unidade_controle
+# Loading work.hexa7seg
+do {C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/wave.do}
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Operador  Hostname: DESKTOP-D670JL6  ProcessID: 10948
+#           Attempting to use alternate WLF file "./wlftbnhm3s".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftbnhm3s
+# ** UI-Msg: (vish-4014) No objects found matching '/tb_template_ganha/db_timeout_out'.
+# Executing ONERROR command at macro C:\Users\Operador\Documents\prova_mari\exp7 P1\TESTBENCHS\wave.do line 22
+run -all
+# Inicio da simulacao
+# Fim da simulacao
+# ** Note: $stop    : C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v(167)
+#    Time: 172757500 us  Iteration: 0  Instance: /tb_template_ganha
+# Break in Module tb_template_ganha at C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v line 167
+# Compile of tb_template_ganha.v was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.tb_template_ganha
+# Break key hit
+run -all
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Inicio da simulacao
+# Fim da simulacao
+# ** Note: $stop    : C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v(159)
+#    Time: 172757500 us  Iteration: 0  Instance: /tb_template_ganha
+# Break in Module tb_template_ganha at C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v line 159
+add wave -position insertpoint  \
+sim:/tb_template_ganha/botoes_in
+restart -f
+# **** Error: RestartQ cmd: namespace inscope ::vsimwidgets::ViewMaster {::.view_master SourceUpdatesAfterRestart} sim
+# ****        can't read "cbstate": no such variable
+# can't read "cbstate": no such variable
+#     while executing
+# "if {$cbstate} {
+#                   set PrefSource(WarnSourceChanged) 0
+#                }"
+#     (object "::.main_pane.source.interior.cs.body.srcobj" method "::vsimwidgets::SrcCommon::SourceCheckCompileTime" body line 82)
+#     invoked from within
+# "SourceCheckCompileTime"
+#     (object "::.main_pane.source.interior.cs.body.srcobj" method "::vsimwidgets::Srcobj::InitializeForDebug" body line 18)
+#     invoked from within
+# "InitializeForDebug"
+#     (object "::.main_pane.source.interior.cs.body.srcobj" method "::vsimwidgets::Srcobj::SourceUpdateLoadComplete" body line 49)
+#     invoked from within
+# "$srcedit SourceUpdateLoadComplete -restart"
+#     (object "::.view_master" method "::vsimwidgets::ViewMaster::SourceUpdatesAfterRestart" body line 7)
+#     invoked from within
+# "::.view_master SourceUpdatesAfterRestart sim"
+#     (in namespace inscope "::vsimwidgets::ViewMaster" script line 1)
+#     invoked from within
+# "namespace inscope ::vsimwidgets::ViewMaster {::.view_master SourceUpdatesAfterRestart} sim"
+#     ("eval" body line 1)
+#     invoked from within
+# "eval $p $tankNamespace "
+# Compile of tb_template_ganha.v was successful.
+run -all
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Inicio da simulacao
+# Fim da simulacao
+# ** Note: $stop    : C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v(159)
+#    Time: 172757500 us  Iteration: 0  Instance: /tb_template_ganha
+# Break in Module tb_template_ganha at C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v line 159
+# Compile of tb_template_ganha.v failed with 2 errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.tb_template_ganha
+# Compile of tb_template_ganha.v was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.tb_template_ganha
+run -all
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Inicio da simulacao
+# Fim da simulacao
+# ** Note: $stop    : C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v(170)
+#    Time: 145557500 us  Iteration: 0  Instance: /tb_template_ganha
+# Break in Module tb_template_ganha at C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v line 170
+add wave -position insertpoint  \
+sim:/tb_template_ganha/dut/FD/fio_contador_jogada
+restart -f
+run -continue
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Inicio da simulacao
+# Fim da simulacao
+# ** Note: $stop    : C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v(170)
+#    Time: 145557500 us  Iteration: 0  Instance: /tb_template_ganha
+# Break in Module tb_template_ganha at C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v line 170
+run -all
+# Break key hit
+# Simulation stop requested.
+# Break key hit
+run -all
+# Break key hit
+# Simulation stop requested.
+restart -f
+run -all
+# GetModuleFileName: Não foi possível encontrar o módulo especificado.
+# 
+# 
+# Inicio da simulacao
+# Fim da simulacao
+# ** Note: $stop    : C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v(170)
+#    Time: 145557500 us  Iteration: 0  Instance: /tb_template_ganha
+# Break in Module tb_template_ganha at C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/tb_template_ganha.v line 170
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf {C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/wave.do}
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf {C:/Users/Operador/Documents/prova_mari/exp7 P1/TESTBENCHS/wave.do}
+# End time: 15:35:20 on Feb 18,2025, Elapsed time: 0:31:32
+# Errors: 0, Warnings: 1

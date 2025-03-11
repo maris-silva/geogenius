@@ -1,0 +1,27 @@
+# Current time Tue Feb 18 15:02:15 2025
+# ModelSim - Intel FPGA Edition Stack Trace
+# Program = vish
+# Id = "2020.1"
+# Version = "2020.02"
+# Date = "Feb 28 2020"
+# Platform = win32pe
+
+Exception c0000005 has occurred at address 00887930. Traceback:
+# 0    0x00887930: 'win_tb_CoreExceptionFilter + 0x11a310'
+# 1    0x00606be0: 'WinMain + 0xad850'
+# 2    0x0060721b: 'WinMain + 0xade8b'
+# 3    0x00608027: 'WinMain + 0xaec97'
+# 4    0x006021c0: 'WinMain + 0xa8e30'
+# 5    0x005f1d87: 'WinMain + 0x989f7'
+# 6    0x005eecc0: 'WinMain + 0x95930'
+# 7    0x005ee913: 'WinMain + 0x95583'
+# 8    0x005ee80f: 'WinMain + 0x9547f'
+# 9    0x006436fd: 'WinMain + 0xea36d'
+# 10   0x00643417: 'WinMain + 0xea087'
+# 11   0x0064ed3b: 'WinMain + 0xf59ab'
+# 12   0x006503ef: 'WinMain + 0xf705f'
+# 13   0x0065060b: 'WinMain + 0xf727b'
+# 14   0x6f3339f1: 'TclNREvalObjv + 0x3e1'
+StackWalk failed 299
+# End of Stack Trace
+
