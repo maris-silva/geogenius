@@ -21,12 +21,14 @@ module unidade_controle_prova(
 	 input 	   jogada_igual_memoria, //compara os valores da jogada com a ROM
     input      endereco_igual_limite, //verifica se o contador atingiu o limite daquela nivel
 	 input      deu_timeout,
-	 input      meio_timer_led,
-    input      fim_timer_led,
-    input      led_igual_nivel,
+	//  input      meio_timer_led,
+  //   input      fim_timer_led,
+  //   input      led_igual_nivel,
     
 	 output reg zera_contador_nivel,
     output reg zera_contador_jogada,
+    output reg zera_contador_score, // NOVA ENTRADA
+    output reg conta_score, // NOVA ENTRADA
     output reg conta_nivel, //responsável por aumentar o contador que dita as nivels 
     output reg conta_jogada,//responsável pelo contador que dita a posicao da memoria em cada jogada
     output reg zeraR,
@@ -39,12 +41,12 @@ module unidade_controle_prova(
 	output reg conta_timeout,
 	output reg zera_timeout,
 
-    output reg zera_contador_led,
-    output reg contar_led,
-    output reg liga_led,
+    // output reg zera_contador_led,
+    // output reg contar_led,
+    // output reg liga_led,
 
-    output reg zera_timer_led,
-    output reg conta_timer_led,
+    // output reg zera_timer_led,
+    // output reg conta_timer_led,
 
     output reg [3:0] db_estado
 );
@@ -59,9 +61,7 @@ module unidade_controle_prova(
     parameter registra              = 4'b0110;  // 6
     parameter comparacao            = 4'b0111;  // 7
     parameter proxima_jogada        = 4'b1000;  // 8
-    parameter proximo_nivel         = 4'b1001;  // 9
-	parameter errou_estado          = 4'b1110;  // E
-    parameter acertou_estado        = 4'b1100;  // C
+	parameter fim_estado            = 4'b1001;  // 9
 	parameter timeout_estado 	    = 4'b1101;  // D
 	 
     // Variaveis de estado
@@ -82,27 +82,20 @@ module unidade_controle_prova(
             preparacao:             Eprox <= liga_led_estado;
             liga_led_estado:        Eprox <= meio_timer_led ? desliga_led_estado : liga_led_estado;
             desliga_led_estado:     begin
-                if (fim_timer_led) begin 
-                    if (led_igual_nivel) Eprox <= aguarda_jogada;
-                    else Eprox <= avanca_led_estado;
-                end
+                if (fim_timer_led) Eprox <= avanca_led_estado;
                 else Eprox <= desliga_led_estado;
             end
             avanca_led_estado:      Eprox <= liga_led_estado;
             aguarda_jogada:         Eprox <= deu_timeout ? timeout_estado : (fez_jogada ? registra : aguarda_jogada);
             registra:               Eprox <= comparacao;
             comparacao:             begin
-                if (jogada_igual_memoria == 1'b0) Eprox <= errou_estado;
-                else if (endereco_igual_limite)begin
-                    if (ultimo_nivel) Eprox <= acertou_estado;
-                    else Eprox <= proximo_nivel;
-                end
+                if (endereco_igual_limite == 1'b1) Eprox <= fim_estado;
                 else Eprox <= proxima_jogada;
             end
             proxima_jogada:         Eprox <= aguarda_jogada;
-            proximo_nivel:          Eprox <= liga_led_estado;
-			errou_estado: 		    Eprox <= iniciar ? inicial : errou_estado;
-            acertou_estado:         Eprox <= iniciar ? inicial : acertou_estado;
+           // proximo_nivel:          Eprox <= liga_led_estado;
+			fim_estado: 		    Eprox <= iniciar ? inicial : fim_estado;
+          //  acertou_estado:         Eprox <= iniciar ? inicial : acertou_estado;
             timeout_estado:			Eprox <= iniciar ? inicial : timeout_estado;
 				default:            Eprox <= inicial;
         endcase
@@ -142,9 +135,7 @@ module unidade_controle_prova(
             registra:              db_estado <= registra;            // 6
             comparacao:            db_estado <= comparacao;          // 7
             proxima_jogada:        db_estado <= proxima_jogada;      // 8
-            proximo_nivel:         db_estado <= proximo_nivel;       // 9
-            errou_estado:          db_estado <= errou_estado;        // E
-            acertou_estado:        db_estado <= acertou_estado;      // C
+            fim_estado:          db_estado <= fim_estado;        // E
             timeout_estado: 	     db_estado <= timeout_estado;      // D
 				default: 	           db_estado <= 4'b1011;             // B
         endcase
