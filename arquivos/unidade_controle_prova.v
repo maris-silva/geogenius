@@ -28,7 +28,7 @@ module unidade_controle_prova(
 	 output reg zera_contador_nivel,
     output reg zera_contador_jogada,
     output reg zera_contador_score,
-    output reg zera_contador_score,
+	 output reg conta_score,
     output reg conta_nivel, //responsável por aumentar o contador que dita as nivels 
     output reg conta_jogada,//responsável pelo contador que dita a posicao da memoria em cada jogada
     output reg zeraR,
@@ -60,8 +60,8 @@ module unidade_controle_prova(
     parameter aguarda_jogada        = 4'b0101;  // 5
     parameter registra              = 4'b0110;  // 6
     parameter comparacao            = 4'b0111;  // 7
-    parameter acertou               = 4'b1000;  // 8
-    parameter errou                 = 4'b1001;  // 9
+    parameter acertou_estado               = 4'b1000;  // 8
+    parameter errou_estado                 = 4'b1001;  // 9
     parameter proxima_jogada        = 4'b1010;  // A
     parameter fim_estado            = 4'b1011;  // B
     parameter timeout_estado 	    = 4'b1101;  // D
@@ -107,26 +107,25 @@ module unidade_controle_prova(
 
     // Logica de saida (maquina Moore)
     always @* begin
-        zera_contador_jogada        = (Eatual == inicial || Eatual == preparacao || Eatual == proximo_nivel) ? 1'b1 : 1'b0;
+        zera_contador_jogada        = (Eatual == inicial || Eatual == preparacao) ? 1'b1 : 1'b0;
         zera_contador_nivel         = (Eatual == inicial || Eatual == preparacao) ? 1'b1 : 1'b0;
-        conta_nivel                 = (Eatual == proximo_nivel) ? 1'b1 : 1'b0;
+        conta_nivel                 = (Eatual == proxima_jogada) ? 1'b1 : 1'b0;
         conta_jogada                = (Eatual == proxima_jogada) ? 1'b1 : 1'b0;
         registraR                   = (Eatual == registra) ? 1'b1 : 1'b0;
         pronto                      = (Eatual == acertou_estado || Eatual == errou_estado || Eatual == timeout_estado) ? 1'b1 : 1'b0;
-        // errou 	                    = (Eatual == errou_estado) ? 1'b1 : 1'b0;
-        // acertou                     = (Eatual == acertou_estado) ? 1'b1 : 1'b0;
-        zera_timeout 				= (Eatual == preparacao || Eatual ==inicial ||Eatual == registra);
+        // errou 	                  = (Eatual == errou_estado) ? 1'b1 : 1'b0;
+        // acertou                  = (Eatual == acertou_estado) ? 1'b1 : 1'b0;
+        zera_timeout 					= (Eatual == preparacao || Eatual ==inicial ||Eatual == registra);
         timeout                     = (Eatual == timeout_estado) ? 1'b1 : 1'b0;
         conta_timeout               = (Eatual == aguarda_jogada) ? 1'b1 : 1'b0;
-        // zera_contador_led           = (Eatual == preparacao || Eatual == proximo_nivel) ? 1'b1 : 1'b0;
-        // contar_led                  = (Eatual == avanca_led_estado) ? 1'b1 : 1'b0;
-        // liga_led                    = (Eatual == liga_led_estado) ? 1'b1 : 1'b0;
-        // zera_timer_led              = (Eatual == preparacao || Eatual == avanca_led_estado || Eatual == proximo_nivel) ? 1'b1 : 1'b0;
-        // conta_timer_led             = (Eatual == liga_led_estado || Eatual == desliga_led_estado) ? 1'b1 : 1'b0;
+        // zera_contador_led        = (Eatual == preparacao || Eatual == proximo_nivel) ? 1'b1 : 1'b0;
+        // contar_led               = (Eatual == avanca_led_estado) ? 1'b1 : 1'b0;
+        // liga_led                 = (Eatual == liga_led_estado) ? 1'b1 : 1'b0;
+        // zera_timer_led           = (Eatual == preparacao || Eatual == avanca_led_estado || Eatual == proximo_nivel) ? 1'b1 : 1'b0;
+        // conta_timer_led          = (Eatual == liga_led_estado || Eatual == desliga_led_estado) ? 1'b1 : 1'b0;
         zeraR                       = (Eatual == inicial || Eatual == preparacao 
-        || Eatual == proxima_jogada || Eatual == proximo_nivel 
-        || Eatual == acertou_estado || Eatual == errou_estado) ? 1'b1 : 1'b0; 
-		
+													  || Eatual == proxima_jogada 
+													  || Eatual == acertou_estado || Eatual == errou_estado) ? 1'b1 : 1'b0; 					
         zera_contador_score = (Eatual == timeout_estado || Eatual == fim_estado) ? 1'b1 : 1'b0;
         conta_score = (Eatual == acertou_estado) ? 1'b1 : 1'b0;
 
@@ -140,13 +139,12 @@ module unidade_controle_prova(
             aguarda_jogada:        db_estado <= aguarda_jogada;      // 5
             registra:              db_estado <= registra;            // 6
             comparacao:            db_estado <= comparacao;          // 7
-            acertou                db_estado <= acertou;  // 8
-            errou                 db_estado <= errou;  // 9    
-            proxima_jogada:        db_estado <= proxima_jogada;      // 8
-            fim_estado:          db_estado <= fim_estado;        // E
+            acertou_estado:        db_estado <= acertou_estado;  // 8
+            errou_estado:          db_estado <= errou_estado;  // 9    
+            proxima_jogada:        db_estado <= proxima_jogada;      // A
+            fim_estado:            db_estado <= fim_estado;        // E
             timeout_estado: 	     db_estado <= timeout_estado;      // D
 				default: 	           db_estado <= 4'b1011;             // B
         endcase
-    end
-
+		end
 endmodule

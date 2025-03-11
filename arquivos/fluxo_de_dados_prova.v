@@ -1,6 +1,6 @@
 module fluxo_de_dados_prova (
     input        clock,
-    input  [3:0] botoes,
+    input  [15:0] botoes,
     input        zera_contador_nivel,
     input        zera_contador_jogada,
     input        zera_contador_score,
@@ -23,8 +23,8 @@ module fluxo_de_dados_prova (
     output       endereco_igual_limite,
     output       ultimo_nivel,
     output       fez_jogada,
-    output [3:0] db_jogada,
-    output [3:0] db_memoria,
+    output [15:0] db_jogada,
+    output [15:0] db_memoria,
     output [3:0] db_nivel,
     output [3:0] score,
     // output saida_led_igual_nivel,
@@ -37,14 +37,14 @@ module fluxo_de_dados_prova (
 
 
     wire wideOr0;
-    assign wideOr0 = botoes[3] || botoes[2] || botoes[1] || botoes[0];
+    assign wideOr0 = botoes[15] || botoes[14] || botoes[13] || botoes[12] || botoes[11] || botoes[10] || botoes[9] || botoes[8] || botoes[7] || botoes[6] || botoes[5] || botoes[4] ||botoes[3] || botoes[2] || botoes[1] || botoes[0];
 	 
 	//  wire [3:0] db_memoria0, db_memoria1;
 	//  assign db_memoria = memoria ? db_memoria1 : db_memoria0;
 	 
-	 wire [3:0] valor_rom_led;
+	//  wire [3:0] valor_rom_led;
 	//  wire [3:0] valor_rom_led0, valor_rom_led1;
-	 wire [3:0] saida_contador_led;
+	//  wire [3:0] saida_contador_led;
 	 
 	 wire [3:0] fio_contador_jogada;
 
@@ -114,14 +114,14 @@ module fluxo_de_dados_prova (
     );
 	 
     //ROM DA JOGADA
-    sync_rom_16x4 rom (
+    sync_rom_16x16 rom (
         .clock (clock),
         .address ( fio_contador_jogada ),
         .data_out ( db_memoria )
     );
 	 
     //REGISTRADOR DE BOTAO
-    registrador_4 registrador_jogada (
+    registrador_16 registrador_jogada (
         .clock( clock ),
         .clear( zeraR ),
         .enable( registraR ),
