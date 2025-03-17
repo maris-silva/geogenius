@@ -73,7 +73,7 @@ fluxo_de_dados FD(
     .ultima_jogada ( fio_ultima_jogada ),
     .fez_jogada ( fio_fez_jogada),
     .db_jogada (fio_db_jogada),
-    .score ( score ),
+    .score ( fio_score ),
     .leds ( leds )
 );
 
@@ -108,6 +108,11 @@ unidade_de_controle UC (
 );
 
 // falta display score - tem q alterar o módulo de display pra receber entrada de 3b e saída em base decimal, nn hexa.
+
+hexa7seg display_score (
+   .hexa( {1'b0, fio_score} ),
+   .display( score )
+);
 
 hexa7seg display_estado (
    .hexa( fio_db_estado ),
