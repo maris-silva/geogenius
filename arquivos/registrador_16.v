@@ -10,15 +10,15 @@
 //     14/12/2023  1.0     Edson Midorikawa  versao inicial
 //------------------------------------------------------------------
 //
-module registrador_16 (
+module registrador_8 (
     input        clock,
     input        clear,
     input        enable,
-    input  [15:0] D,
-    output [15:0] Q
+    input  [7:0] D,
+    output [7:0] Q
 );
 
-    reg [15:0] IQ;
+    reg [7:0] IQ;
 
     always @(posedge clock or posedge clear) begin
         if (clear)
