@@ -5,14 +5,14 @@ module fluxo_de_dados (
 
     input        zera_contador_jogada,
     input        zera_contador_score,
-    input        zera_timer_led,
+    //input        zera_timer_led,
     input        zera_timer_resultado,
     input        zera_timeout,
     input        zeraR,
 
     input        conta_score,
     input        conta_jogada,
-    input        conta_timer_led,
+    //input        conta_timer_led,
     input        conta_timer_resultado,
     input        conta_timeout,
     
@@ -21,9 +21,8 @@ module fluxo_de_dados (
 
     output [2:0] score,
     output [7:0] leds, // leds já são o db_memoria
-    output [7:0] db_jogada,
 
-    output       fim_timer_led,
+    //output       fim_timer_led,
     output       fim_timer_resultado,
     output       deu_timeout,
     output       jogada_igual_memoria,
@@ -41,12 +40,13 @@ module fluxo_de_dados (
     wire wideOr0;
     assign wideOr0 = botoes[7] || botoes[6] || botoes[5] || botoes[4] ||botoes[3] || botoes[2] || botoes[1] || botoes[0];
 	 
-
+	
+	 wire [7:0] fio_db_jogada;
     // CONTADOR DE TIMEOUT POR DIFFICULDADE
     wire deu_timeout_0, deu_timeout_1;
     assign deu_timeout = (dificuldade == 1'b1) ? deu_timeout_1 : deu_timeout_0;
 	 
-    contador_m #(5000, 13) contador_timeout_dificuldade_0 (
+    contador_m #(8000, 13) contador_timeout_dificuldade_0 (
         .clock( clock ),
         .zera_as  ( zera_timeout ), 
         .zera_s   ( 1'b0 ), 
@@ -56,7 +56,7 @@ module fluxo_de_dados (
         .meio    ( )
 	  );
 
-    contador_m #(3000, 13) contador_timeout_dificuldade_1 (
+    contador_m #(5000, 13) contador_timeout_dificuldade_1 (
         .clock( clock ),
         .zera_as  ( zera_timeout ), 
         .zera_s   ( 1'b0 ), 
@@ -93,7 +93,7 @@ module fluxo_de_dados (
     // COMPARADOR JOGADA IGUAL MEMORIA
     comparador_85 comparador_jogada_memoria (
       .A   ( fio_db_memoria ),
-      .B   ( db_jogada ),
+      .B   ( fio_db_jogada ),
       .ALBi( 1'b0 ),
       .AGBi( 1'b0 ),
       .AEBi( 1'b1 ),
@@ -103,7 +103,7 @@ module fluxo_de_dados (
     );
 	 
     //ROM DA JOGADA
-    sync_rom_16x8 rom (
+    sync_rom_8x8 rom (
         .clock (clock),
         .address ( fio_contador_jogada ),
         .data_out ( fio_db_memoria )
@@ -115,7 +115,7 @@ module fluxo_de_dados (
         .clear( zeraR ),
         .enable( registraR ),
         .D( botoes ),
-        .Q( db_jogada )
+        .Q( fio_db_jogada  )
     );
 
     edge_detector detector (
@@ -126,18 +126,18 @@ module fluxo_de_dados (
     );
 
     // TEMPORIZADOR DO LED INICIAL DAS BANDEIRAS
-    contador_m #(2000,12) temporizador_led_inicial ( 
-        .clock( clock ),
-        .zera_as  ( 1'b0 ), 
-        .zera_s   ( zera_timer_led ), 
-        .conta  (  conta_timer_led ),
-        .Q  (  ),
-        .fim    ( fim_timer_led ),
-        .meio    (  )
-	  );   
+    // contador_m #(2000,12) temporizador_led_inicial ( 
+    //     .clock( clock ),
+    //     .zera_as  ( 1'b0 ), 
+    //     .zera_s   ( zera_timer_led ), 
+    //     .conta  (  conta_timer_led ),
+    //     .Q  (  ),
+    //     .fim    ( fim_timer_led ),
+    //     .meio    (  )
+	//   );   
 
     // TEMPORIZADOR DO LED DE RESULTADO
-    contador_m #(2000,12) temporizador_led_final ( 
+    contador_m #(2000,12) temporizador_led_resultado ( 
         .clock( clock ),
         .zera_as  ( 1'b0 ), 
         .zera_s   ( zera_timer_resultado ), 

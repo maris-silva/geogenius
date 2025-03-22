@@ -10,7 +10,7 @@
 //     14/12/2023  1.0     Edson Midorikawa  versao inicial
 //------------------------------------------------------------------
 //
-module sync_rom_16x8 (clock, address, data_out);
+module sync_rom_8x8 (clock, address, data_out);
     input            clock;
     input      [2:0] address;
     output reg [7:0] data_out;
