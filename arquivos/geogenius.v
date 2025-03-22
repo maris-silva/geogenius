@@ -46,7 +46,9 @@ wire      fio_fim_timer_resultado,
 
 wire [3:0]  fio_db_estado;
 wire [2:0]  fio_score;
-
+//tempo de jogo
+wire fio_zera_tempo_de_jogo;
+wire [15:0] fio_tempo_de_jogo_shiftado;
 
 fluxo_de_dados FD(
     .clock ( clock ),
@@ -72,6 +74,9 @@ fluxo_de_dados FD(
     .ultima_jogada ( fio_ultima_jogada ),
     .fez_jogada ( fio_fez_jogada),
     .score ( fio_score ),
+    //tempo de jogo
+    .zera_tempo_de_jogo (fio_zera_tempo_de_jogo),
+    .tempo_de_jogo_shiftado(fio_tempo_de_jogo_shiftado),
     .leds ( leds )
 );
 
@@ -102,6 +107,8 @@ unidade_de_controle UC (
     .conta_timeout ( fio_conta_timeout ),
     .liga_led ( fio_liga_led ),
     .registraR ( fio_registraR ),
+    //tempo de jogo
+    .zera_tempo_de_jogo (fio_zera_tempo_de_jogo)
     .db_estado ( fio_db_estado )
 );
 
@@ -116,6 +123,15 @@ hexa7seg display_estado (
    .hexa( fio_db_estado ),
    .display( db_estado )
 );
+
+//saida de tempo de jogo shiftada
+wire [16:0] saida_tempo_de_jogo_BCD;
+bin2bcd conversor_BCD (
+    .bin(fio_tempo_de_jogo_shiftado),
+    .bcd(saida_tempo_de_jogo_BCD)
+)
+
+
 
 assign db_clock = clock; 
 assign db_jogada_igual_memoria = fio_jogada_igual_memoria;

@@ -45,6 +45,9 @@ module unidade_de_controle (
     output reg conta_timer_resultado,
     output reg conta_timeout,
 
+    //Tempo de jogo
+    output reg zera_tempo_de_jogo,
+
     output reg registraR,
     output reg liga_led,
 
@@ -118,6 +121,8 @@ module unidade_de_controle (
         errou 	                     = (Eatual == errou_estado) ? 1'b1 : 1'b0;
         acertou                     = (Eatual == acertou_estado) ? 1'b1 : 1'b0;
         timeout                     = (Eatual == timeout_estado) ? 1'b1 : 1'b0;
+        //tempo de jogo
+        zera_tempo_de_jogo          = (Eatual == inicial || Eatual == preparacao) ? 1'b1 : 1'b0;
 
         // Saida de depuracao (estado)
         case (Eatual)

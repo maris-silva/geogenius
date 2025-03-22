@@ -22,6 +22,10 @@ module fluxo_de_dados (
     output [2:0] score,
     output [7:0] leds, // leds já são o db_memoria
 
+    //TEMPO DE JOGO
+    input zera_tempo_de_jogo,
+    output [15:0] tempo_de_jogo_shiftado,
+
     //output       fim_timer_led,
     output       fim_timer_resultado,
     output       deu_timeout,
@@ -65,6 +69,18 @@ module fluxo_de_dados (
         .fim    ( deu_timeout_1 ),
         .meio    ( )
 	  );
+//TEMPO DE JOGO
+wire [15:0] fio_tempo_de_jogo;
+      contador_tempo_de_jogo #(64000,16,3) contador_tempo_de_jogo(
+        .clock( clock ),
+        .zera_as  ( zera_tempo_de_jogo ), //adicionar sinal nos inputs e outputs da UC e FD 
+        .zera_s   ( 1'b0 ), 
+        .conta  (  conta_timeout ),
+        .Q      (fio_tempo_de_jogo ), 
+        .Qshift (tempo_de_jogo_shiftado) //adicionar sinal nos inputs e outputs da UC e FD 
+        .fim     ( ),
+        .meio    ( )
+      )
 
     //CONTADOR DE JOGADA
     wire fio_fim_dif_1, fio_fim_dif_0;
