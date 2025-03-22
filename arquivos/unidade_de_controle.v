@@ -61,7 +61,8 @@ module unidade_de_controle (
     parameter registra              = 4'b0110;  // 6
     parameter comparacao            = 4'b0111;  // 7
     parameter proxima_jogada        = 4'b1000;  // 8
-    parameter acertou_estado        = 4'b1100;  // C
+    parameter conta_estado				= 4'b1001;	// 9
+	 parameter acertou_estado        = 4'b1100;  // C
     parameter timeout_estado        = 4'b1101;  // D
     parameter errou_estado          = 4'b1110;  // E
     parameter fim_estado            = 4'b1111;  // F
@@ -81,18 +82,19 @@ module unidade_de_controle (
     always @* begin
         case (Eatual)
             inicial:                Eprox <= iniciar ? preparacao : inicial;
-            preparacao:             Eprox <= aguarda_jogada;
+            preparacao:             Eprox <= liga_led_estado;
             liga_led_estado:        Eprox <= fim_timer_led ? avanca_led_estado : liga_led_estado;
             avanca_led_estado:      Eprox <= aguarda_jogada;
             aguarda_jogada:         Eprox <= deu_timeout ? timeout_estado : (fez_jogada ? registra : aguarda_jogada);
             registra:               Eprox <= comparacao;
-            comparacao:             Eprox <= jogada_igual_memoria ? acertou_estado : errou_estado;
-            acertou_estado:         Eprox <= fim_timer_resultado ? (ultima_jogada ? fim_estado : proxima_jogada ) : acertou_estado;
+            comparacao:             Eprox <= jogada_igual_memoria ? conta_estado : errou_estado;
+				conta_estado:				Eprox <= acertou_estado;
+				acertou_estado:         Eprox <= fim_timer_resultado ? (ultima_jogada ? fim_estado : proxima_jogada ) : acertou_estado;
             errou_estado:           Eprox <= fim_timer_resultado ? (ultima_jogada ? fim_estado : proxima_jogada ) : errou_estado;
-            proxima_jogada:         Eprox <= liga_led_estado;
-            fim_estado: 		        Eprox <= iniciar ? inicial : fim_estado;
-            timeout_estado:			    Eprox <= iniciar ? inicial : timeout_estado;
-				default:                    Eprox <= inicial;
+				proxima_jogada:         Eprox <= liga_led_estado;
+            fim_estado: 		      Eprox <= iniciar ? inicial : fim_estado;
+            timeout_estado:			Eprox <= iniciar ? inicial : timeout_estado;
+				default:                Eprox <= inicial;
         endcase
     end
 
@@ -101,7 +103,7 @@ module unidade_de_controle (
         zera_contador_jogada        = (Eatual == inicial || Eatual == preparacao) ? 1'b1 : 1'b0;
         conta_jogada                = (Eatual == proxima_jogada) ? 1'b1 : 1'b0;
         registraR                   = (Eatual == registra) ? 1'b1 : 1'b0;
-        zera_timeout 					      = (Eatual == preparacao || Eatual == inicial || Eatual == registra) ? 1'b1 : 1'b0;
+        zera_timeout 					= (Eatual == preparacao || Eatual == inicial || Eatual == registra) ? 1'b1 : 1'b0;
         conta_timeout               = (Eatual == aguarda_jogada) ? 1'b1 : 1'b0;
         liga_led                    = (Eatual == liga_led_estado) ? 1'b1 : 1'b0;
         zera_timer_led              = (Eatual == preparacao || Eatual == avanca_led_estado) ? 1'b1 : 1'b0;
@@ -109,12 +111,12 @@ module unidade_de_controle (
         zeraR                       = (Eatual == inicial || Eatual == preparacao 
 													          || Eatual == proxima_jogada 
 													          || Eatual == acertou_estado || Eatual == errou_estado) ? 1'b1 : 1'b0; 					
-        zera_contador_score         = (Eatual == timeout_estado || Eatual == fim_estado) ? 1'b1 : 1'b0;
-        conta_score                 = (Eatual == acertou_estado) ? 1'b1 : 1'b0;
+        zera_contador_score         = (Eatual == inicial || Eatual == preparacao) ? 1'b1 : 1'b0;
+        conta_score                 = (Eatual == conta_estado) ? 1'b1 : 1'b0;
         zera_timer_resultado        = (Eatual == preparacao || Eatual == inicial || Eatual == liga_led) ? 1'b1 : 1'b0;
         conta_timer_resultado       = (Eatual == acertou_estado || Eatual == errou_estado) ? 1'b1 : 1'b0;
         pronto                      = (Eatual == fim_estado|| Eatual == timeout_estado) ? 1'b1 : 1'b0;
-        errou 	                    = (Eatual == errou_estado) ? 1'b1 : 1'b0;
+        errou 	                     = (Eatual == errou_estado) ? 1'b1 : 1'b0;
         acertou                     = (Eatual == acertou_estado) ? 1'b1 : 1'b0;
         timeout                     = (Eatual == timeout_estado) ? 1'b1 : 1'b0;
 
@@ -129,6 +131,7 @@ module unidade_de_controle (
             registra:              db_estado <= registra;            // 6
             comparacao:            db_estado <= comparacao;          // 7
             proxima_jogada:        db_estado <= proxima_jogada;      // 8
+				conta_estado:			db_estado <= conta_estado;
             acertou_estado:        db_estado <= acertou_estado;      // C
             timeout_estado: 	     db_estado <= timeout_estado;      // D
             errou_estado:          db_estado <= errou_estado;        // E    

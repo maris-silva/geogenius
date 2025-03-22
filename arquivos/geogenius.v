@@ -3,22 +3,21 @@ module geogenius (
     input reset,
     input jogar,
     input [7:0] botoes, 
-	  input dificuldade,
+	 input dificuldade,
  
-    output ganhou,
-	  output perdeu, 
+    output acertou,
+	 output errou, 
     output pronto,
-	  output timeout,
+	 output timeout,
     output [7:0] leds, //leds na placa
     output [6:0] score, //display hexadecimal 
 
 
     // saidas depuracao
-	  output db_jogada_igual_memoria,
+	 output db_jogada_igual_memoria,
     output db_ultima_jogada, 
     output db_fez_jogada, 
     output db_clock,
-    output [7:0] db_jogada,
     output [6:0] db_estado
 );
 
@@ -45,8 +44,8 @@ wire  fio_fim_timer_led,
       fio_ultima_jogada, 
       fio_fez_jogada; 
 
-wire [7:0]  fio_db_jogada;
 wire [3:0]  fio_db_estado;
+wire [2:0]  fio_score;
 
 
 fluxo_de_dados FD(
@@ -72,7 +71,6 @@ fluxo_de_dados FD(
     .jogada_igual_memoria ( fio_jogada_igual_memoria ),
     .ultima_jogada ( fio_ultima_jogada ),
     .fez_jogada ( fio_fez_jogada),
-    .db_jogada (fio_db_jogada),
     .score ( fio_score ),
     .leds ( leds )
 );
@@ -88,8 +86,8 @@ unidade_de_controle UC (
     .ultima_jogada ( fio_ultima_jogada ),
     .fez_jogada ( fio_fez_jogada ),
     .pronto ( pronto ),
-    .acertou ( ganhou ),
-    .errou ( perdeu ),
+    .acertou ( acertou ),
+    .errou ( errou ),
     .timeout ( timeout ),
     .zera_contador_jogada ( fio_zera_contador_jogada ),
     .zera_contador_score ( fio_zera_contador_score ),
@@ -123,6 +121,5 @@ assign db_clock = clock;
 assign db_jogada_igual_memoria = fio_jogada_igual_memoria;
 assign db_fez_jogada = fio_fez_jogada;
 assign db_ultima_jogada = fio_ultima_jogada;
-assign db_jogada = fio_db_jogada;
 
 endmodule 
