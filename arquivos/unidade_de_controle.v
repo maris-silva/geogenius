@@ -47,6 +47,7 @@ module unidade_de_controle (
 
     //Tempo de jogo
     output reg zera_tempo_de_jogo,
+    output reg mostra_tempo_de_jogo,
 
     output reg registraR,
     output reg liga_led,
@@ -123,7 +124,7 @@ module unidade_de_controle (
         timeout                     = (Eatual == timeout_estado) ? 1'b1 : 1'b0;
         //tempo de jogo
         zera_tempo_de_jogo          = (Eatual == inicial || Eatual == preparacao) ? 1'b1 : 1'b0;
-
+        mostra_tempo_de_jogo        = (Eatual == fim_estado) 1'b1 : 1'b0;
         // Saida de depuracao (estado)
         case (Eatual)
             inicial:               db_estado <= inicial;             // 0

@@ -25,6 +25,7 @@ module fluxo_de_dados (
     //TEMPO DE JOGO
     input zera_tempo_de_jogo,
     output [15:0] tempo_de_jogo_shiftado,
+    input mostra_tempo_de_jogo,
 
     //output       fim_timer_led,
     output       fim_timer_resultado,
@@ -70,17 +71,18 @@ module fluxo_de_dados (
         .meio    ( )
 	  );
 //TEMPO DE JOGO
-wire [15:0] fio_tempo_de_jogo;
+wire [15:0] fio_tempo_de_jogo,fio_tempo_de_jogo_shiftado;
+assign tempo_de_jogo_shiftado = (mostra_tempo_de_jogo == 1'b1) ? fio_tempo_de_jogo_shiftado : 0;
       contador_tempo_de_jogo #(64000,16,3) contador_tempo_de_jogo(
         .clock( clock ),
         .zera_as  ( zera_tempo_de_jogo ), //adicionar sinal nos inputs e outputs da UC e FD 
         .zera_s   ( 1'b0 ), 
         .conta  (  conta_timeout ),
         .Q      (fio_tempo_de_jogo ), 
-        .Qshift (tempo_de_jogo_shiftado) //adicionar sinal nos inputs e outputs da UC e FD 
+        .Qshift (fio_tempo_de_jogo_shiftado) //adicionar sinal nos inputs e outputs da UC e FD 
         .fim     ( ),
         .meio    ( )
-      )
+      );
 
     //CONTADOR DE JOGADA
     wire fio_fim_dif_1, fio_fim_dif_0;

@@ -12,6 +12,12 @@ module geogenius (
     output [7:0] leds, //leds na placa
     output [6:0] score, //display hexadecimal 
 
+    //leds de saida para o tempo medio
+    output [6:0] display_tempo_de_jogo_0,
+    output [6:0] display_tempo_de_jogo_1,
+    output [6:0] display_tempo_de_jogo_2,
+    output [6:0] display_tempo_de_jogo_3,
+
 
     // saidas depuracao
 	 output db_jogada_igual_memoria,
@@ -19,6 +25,7 @@ module geogenius (
     output db_fez_jogada, 
     output db_clock,
     output [6:0] db_estado
+    
 );
 
 // saidas da unidade de controle
@@ -77,8 +84,10 @@ fluxo_de_dados FD(
     //tempo de jogo
     .zera_tempo_de_jogo (fio_zera_tempo_de_jogo),
     .tempo_de_jogo_shiftado(fio_tempo_de_jogo_shiftado),
+    .mostra_tempo_de_jogo (fio_mostra_tempo_de_jogo),
     .leds ( leds )
 );
+wire fio_mostra_tempo_de_jogo;
 
 unidade_de_controle UC (
     .clock ( clock ),
@@ -108,7 +117,8 @@ unidade_de_controle UC (
     .liga_led ( fio_liga_led ),
     .registraR ( fio_registraR ),
     //tempo de jogo
-    .zera_tempo_de_jogo (fio_zera_tempo_de_jogo)
+    .zera_tempo_de_jogo (fio_zera_tempo_de_jogo),
+    .mostra_tempo_de_jogo (fio_mostra_tempo_de_jogo),
     .db_estado ( fio_db_estado )
 );
 
@@ -129,7 +139,29 @@ wire [16:0] saida_tempo_de_jogo_BCD;
 bin2bcd conversor_BCD (
     .bin(fio_tempo_de_jogo_shiftado),
     .bcd(saida_tempo_de_jogo_BCD)
-)
+);
+wire [6:0] fio_display_tempo_de_jogo_0;
+hexa7seg display_tempo_de_jogo_0(
+   .hexa(  saida_tempo_de_jogo_BCD[3:0] ),
+   .display( display_tempo_de_jogo_0 )
+);
+wire [6:0] fio_display_tempo_de_jogo_1;
+hexa7seg display_tempo_de_jogo_1(
+   .hexa(  saida_tempo_de_jogo_BCD[7:4] ),
+   .display( display_tempo_de_jogo_1 )
+);
+wire [6:0] fio_display_tempo_de_jogo_2;
+hexa7seg display_tempo_de_jogo_2(
+   .hexa(  saida_tempo_de_jogo_BCD[11:8] ),
+   .display( display_tempo_de_jogo_2 )
+);
+wire [6:0] fio_display_tempo_de_jogo_3;
+hexa7seg display_tempo_de_jogo_3(
+   .hexa(  saida_tempo_de_jogo_BCD[15:12] ),
+   .display( display_tempo_de_jogo_3 )
+);
+
+
 
 
 
