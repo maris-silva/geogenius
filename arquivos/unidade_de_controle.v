@@ -87,7 +87,6 @@ module unidade_de_controle (
         case (Eatual)
             inicial:                Eprox <= iniciar ? preparacao : inicial;
             preparacao:             Eprox <= aguarda_jogada;
-            //retirar contador de timer led
             aguarda_jogada:         Eprox <= deu_timeout ? timeout_estado : (fez_jogada ? registra : aguarda_jogada);
             registra:               Eprox <= comparacao;
             comparacao:             Eprox <= jogada_igual_memoria ? conta_estado : errou_estado;
@@ -96,7 +95,8 @@ module unidade_de_controle (
             errou_estado:           Eprox <= fim_timer_resultado ? (ultima_jogada ? fim_estado : proxima_jogada ) : errou_estado;
 				proxima_jogada:         Eprox <= aguarda_jogada;
             fim_estado: 		      Eprox <= iniciar ? inicial : fim_estado;
-            timeout_estado:			Eprox <= iniciar ? inicial : timeout_estado;
+            // timeout_estado:			Eprox <= iniciar ? inicial : timeout_estado;
+            timeout_estado:			Eprox <= proxima_jogada;
 				default:                Eprox <= inicial;
         endcase
     end
@@ -118,7 +118,7 @@ module unidade_de_controle (
         conta_score                 = (Eatual == conta_estado) ? 1'b1 : 1'b0;
         zera_timer_resultado        = (Eatual == preparacao || Eatual == inicial || Eatual == registra) ? 1'b1 : 1'b0;
         conta_timer_resultado       = (Eatual == acertou_estado || Eatual == errou_estado) ? 1'b1 : 1'b0;
-        pronto                      = (Eatual == fim_estado|| Eatual == timeout_estado) ? 1'b1 : 1'b0;
+        pronto                      = (Eatual == fim_estado) ? 1'b1 : 1'b0; // nao fica mais ativo no timeout
         errou 	                     = (Eatual == errou_estado) ? 1'b1 : 1'b0;
         acertou                     = (Eatual == acertou_estado) ? 1'b1 : 1'b0;
         timeout                     = (Eatual == timeout_estado) ? 1'b1 : 1'b0;
@@ -136,12 +136,12 @@ module unidade_de_controle (
             registra:              db_estado <= registra;            // 6
             comparacao:            db_estado <= comparacao;          // 7
             proxima_jogada:        db_estado <= proxima_jogada;      // 8
-				conta_estado:			db_estado <= conta_estado;
+				conta_estado:	    db_estado <= conta_estado;
             acertou_estado:        db_estado <= acertou_estado;      // C
             timeout_estado: 	     db_estado <= timeout_estado;      // D
             errou_estado:          db_estado <= errou_estado;        // E    
             fim_estado:            db_estado <= fim_estado;          // F
-				default: 	                 db_estado <= 4'b1011;             // B
+				default: 	        db_estado <= 4'b1011;             // B
         endcase
 		end
 endmodule
