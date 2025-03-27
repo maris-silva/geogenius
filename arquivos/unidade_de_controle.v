@@ -96,7 +96,7 @@ module unidade_de_controle (
 				proxima_jogada:         Eprox <= aguarda_jogada;
             fim_estado: 		      Eprox <= iniciar ? inicial : fim_estado;
             // timeout_estado:			Eprox <= iniciar ? inicial : timeout_estado;
-            timeout_estado:			Eprox <= proxima_jogada;
+            timeout_estado:			Eprox <= fim_timer_resultado ? (ultima_jogada ? fim_estado : proxima_jogada ) : timeout_estado;
 				default:                Eprox <= inicial;
         endcase
     end
