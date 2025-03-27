@@ -1,4 +1,4 @@
-from WF_SDK import device, static, supplies  # import instruments
+from WF_SDK import device, static, supplies 
 from time import sleep, time
 import os
 import pandas as pd
@@ -8,8 +8,15 @@ CSV_RESULTADOS = 'resultados.csv'
 CSV_PONTUACOES = 'pontuacoes.csv'
 SLEEP_DELAY = 0.1
 
-# MUDAR AQUI DE ACORDO COM OS PAISES
+# ARRUMAR AQUI PARA COLOCAR OS PAISES inveitei da minha cabeca kk
 POSSIVEIS_RESPOSTAS = ["Australia", "EUA", "Japao", "Africa do Sul", "Argentina", "Russia", "Australia", "Franca"]
+
+# ARRUMAR OS PINOS DIO COM 
+DIO_START = 10  
+DIO_RESET = 11
+DIO_TIMEOUT = 12 
+DIO_ACERTOU = 13 
+DIO_ERRO = 14 
 
 class AnalogGameReader:
     def __init__(self):
@@ -19,7 +26,6 @@ class AnalogGameReader:
         self.read_game_results()
 
     def get_next_game_id(self):
-         # inicializa o index pra um jogo 
         if os.path.exists(CSV_PONTUACOES):
             df = pd.read_csv(CSV_PONTUACOES)
             if not df.empty:
@@ -49,54 +55,62 @@ class AnalogGameReader:
             static.set_mode(device_data, index, False)
 
         try:
-            index_pergunta = 0
-            pontuacao = 0
-            tempo_total = 0
-            tempo_inicio = None
+            while True: 
+                while not static.get_state(device_data, DIO_START): 
+                    sleep(SLEEP_DELAY) # espera dar o start pra comecar 
 
-            while index_pergunta < len(POSSIVEIS_RESPOSTAS):
-                # COLOCAR O SINAL CONTA_TIMEOUT NO DIO 
-                # MUDAR AQUI OS NUMEROS DO DIO
-                conta_tempo = static.get_state(device_data, 14)  # DIO 14 
-                acertou = static.get_state(device_data, 11)  # DIO 11 
-                errou = static.get_state(device_data, 12)  # DIO 12 
-                
-                # contagem do tempo
-                if conta_tempo:
-                    if tempo_inicio is None:
-                        tempo_inicio = time()  
-                else:
-                    if tempo_inicio is not None:
-                        tempo_total += time() - tempo_inicio 
-                        tempo_inicio = None
+                print("Jogo iniciado")
+                # quando inicia um novo jogo reseta as variaveis
+                index_pergunta = 0
+                pontuacao = 0
+                tempo_total = 0
+                tempo_inicio = None
 
-                if acertou or errou:
-                    resultado = "Acerto" if acertou else "Erro"
-                    if acertou:
-                        pontuacao += 1
-                    
-                    # resultado por pais para o mapa mundo 
-                    df_resultados = pd.read_csv(CSV_RESULTADOS)
-                    novo_resultado = pd.DataFrame([{ 
-                        "jogo_id": self.jogo_id, 
-                        "pais": POSSIVEIS_RESPOSTAS[index_pergunta], 
-                        "resultado": resultado
-                    }])
-                    df_resultados = pd.concat([df_resultados, novo_resultado], ignore_index=True)
-                    df_resultados.to_csv(CSV_RESULTADOS, index=False)
+                while index_pergunta < len(POSSIVEIS_RESPOSTAS):
+                    conta_tempo = static.get_state(device_data, DIO_TIMEOUT) 
+                    acertou = static.get_state(device_data, DIO_ACERTOU) 
+                    errou = static.get_state(device_data, DIO_ERRO) 
+                    reset = static.get_state(device_data, DIO_RESET) 
 
-                    index_pergunta += 1
+                    if reset: # adicionei aqui para se der o botao do reset 
+                        print("Jogo resetado")
+                        break  
+                    if conta_tempo:
+                        if tempo_inicio is None:
+                            tempo_inicio = time()  
+                    else:
+                        if tempo_inicio is not None:
+                            tempo_total += time() - tempo_inicio
+                            tempo_inicio = None
 
-                sleep(SLEEP_DELAY)
+                    if acertou or errou:
+                        resultado = "Acerto" if acertou else "Erro"
+                        if acertou:
+                            pontuacao += 1
 
-            # pontuação final e tempo total
-            df_pontuacoes = pd.read_csv(CSV_PONTUACOES)
-            df_pontuacoes = pd.concat([df_pontuacoes, pd.DataFrame([{ 
-                "jogo_id": self.jogo_id, 
-                "pontuacao_final": pontuacao,
-                "tempo_total": round(tempo_total, 3) # aqui e o tempo total, no grafico divide por 8 
-            }])], ignore_index=True)
-            df_pontuacoes.to_csv(CSV_PONTUACOES, index=False)
+                        df_resultados = pd.read_csv(CSV_RESULTADOS)
+                        novo_resultado = pd.DataFrame([{ 
+                            "jogo_id": self.jogo_id, 
+                            "pais": POSSIVEIS_RESPOSTAS[index_pergunta], 
+                            "resultado": resultado
+                        }])
+                        df_resultados = pd.concat([df_resultados, novo_resultado], ignore_index=True)
+                        df_resultados.to_csv(CSV_RESULTADOS, index=False)
+
+                        index_pergunta += 1
+
+                    sleep(SLEEP_DELAY)
+
+              # salvar pontuacao e tempo de jogada 
+                df_pontuacoes = pd.read_csv(CSV_PONTUACOES)
+                df_pontuacoes = pd.concat([df_pontuacoes, pd.DataFrame([{ 
+                    "jogo_id": self.jogo_id, 
+                    "pontuacao_final": pontuacao,
+                    "tempo_total": round(tempo_total, 3)
+                }])], ignore_index=True)
+                df_pontuacoes.to_csv(CSV_PONTUACOES, index=False)
+
+                self.jogo_id += 1  # incrementa o id do jogo e finaliza
 
         except KeyboardInterrupt:
             print("Interrompido pelo usuário.")
