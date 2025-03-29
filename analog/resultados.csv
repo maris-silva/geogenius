@@ -1,0 +1,25 @@
+jogo_id,pais,resultado
+1,Australia,Acerto
+1,Mexico,Acerto
+1,South Africa,Acerto
+1,Canada,Erro
+1,India,Acerto
+1,Egito,Erro
+1,Russia,Acerto
+1,Brazil,Erro
+2,Australia,Acerto
+2,Mexico,Erro
+2,South Africa,Erro
+2,Canada,Acerto
+2,India,Erro
+2,Egito,Erro
+2,Russia,Acerto
+2,Brazil,Acerto
+3,Australia,Acerto
+3,Mexico,Acerto
+3,South Africa,Acerto
+3,Canada,Acerto
+3,India,Acerto
+3,Egito,Acerto
+3,Russia,Acerto
+3,Brazil,Erro
