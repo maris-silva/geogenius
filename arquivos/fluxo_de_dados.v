@@ -5,14 +5,12 @@ module fluxo_de_dados (
 
     input        zera_contador_jogada,
     input        zera_contador_score,
-    //input        zera_timer_led,
     input        zera_timer_resultado,
     input        zera_timeout,
     input        zeraR,
 
     input        conta_score,
     input        conta_jogada,
-    //input        conta_timer_led,
     input        conta_timer_resultado,
     input        conta_timeout,
     
@@ -20,14 +18,13 @@ module fluxo_de_dados (
     input        liga_led,
 
     output [2:0] score,
-    output [7:0] leds, // leds já são o db_memoria
+    output [7:0] leds, 
 
     //TEMPO DE JOGO
     input zera_tempo_de_jogo,
     output [15:0] tempo_de_jogo_shiftado,
     input mostra_tempo_de_jogo,
 
-    //output       fim_timer_led,
     output       fim_timer_resultado,
     output       deu_timeout,
     output       jogada_igual_memoria,
@@ -35,18 +32,18 @@ module fluxo_de_dados (
     output       fez_jogada
     );
 
+	 wire [7:0] fio_botoes;
+	 assign fio_botoes = ~botoes;
+    wire wideOr0;
+    assign wideOr0 = |fio_botoes;
 	 
-	  wire [2:0] fio_contador_jogada;
-	//  wire [3:0] saida_contador_led;
-
+		  wire [2:0] fio_contador_jogada;
     wire [7:0] fio_db_memoria;
     assign leds = liga_led ? fio_db_memoria : 8'b00000000;
 
-    wire wideOr0;
-    assign wideOr0 = botoes[7] || botoes[6] || botoes[5] || botoes[4] ||botoes[3] || botoes[2] || botoes[1] || botoes[0];
-	 
-	
+
 	 wire [7:0] fio_db_jogada;
+
     // CONTADOR DE TIMEOUT POR DIFFICULDADE
     wire deu_timeout_0, deu_timeout_1;
     assign deu_timeout = (dificuldade == 1'b1) ? deu_timeout_1 : deu_timeout_0;
@@ -75,11 +72,11 @@ wire [15:0] fio_tempo_de_jogo,fio_tempo_de_jogo_shiftado;
 assign tempo_de_jogo_shiftado = (mostra_tempo_de_jogo == 1'b1) ? fio_tempo_de_jogo_shiftado : 0;
       contador_tempo_de_jogo #(64000,16,3) contador_tempo_de_jogo(
         .clock( clock ),
-        .zera_as  ( zera_tempo_de_jogo ), //adicionar sinal nos inputs e outputs da UC e FD 
+        .zera_as  ( zera_tempo_de_jogo ), 
         .zera_s   ( 1'b0 ), 
         .conta  (  conta_timeout ),
         .Q      (fio_tempo_de_jogo ), 
-        .Qshift (fio_tempo_de_jogo_shiftado) //adicionar sinal nos inputs e outputs da UC e FD 
+        .Qshift (fio_tempo_de_jogo_shiftado), 
         .fim     ( ),
         .meio    ( )
       );
@@ -97,7 +94,7 @@ assign tempo_de_jogo_shiftado = (mostra_tempo_de_jogo == 1'b1) ? fio_tempo_de_jo
         .meio    ( fio_fim_dif_0 )
 	  );   
 
-    // CONTADOR DE SCORE (NOVO MODULO)
+    // CONTADOR DE SCORE
     contador_m #(8,3) contador_score (
         .clock( clock ),
         .zera_as  ( 1'b0 ), 
@@ -132,7 +129,7 @@ assign tempo_de_jogo_shiftado = (mostra_tempo_de_jogo == 1'b1) ? fio_tempo_de_jo
         .clock( clock ),
         .clear( zeraR ),
         .enable( registraR ),
-        .D( botoes ),
+        .D( fio_botoes ),
         .Q( fio_db_jogada  )
     );
 
@@ -142,17 +139,6 @@ assign tempo_de_jogo_shiftado = (mostra_tempo_de_jogo == 1'b1) ? fio_tempo_de_jo
         .sinal( wideOr0 ),
         .pulso( fez_jogada )
     );
-
-    // TEMPORIZADOR DO LED INICIAL DAS BANDEIRAS
-    // contador_m #(2000,12) temporizador_led_inicial ( 
-    //     .clock( clock ),
-    //     .zera_as  ( 1'b0 ), 
-    //     .zera_s   ( zera_timer_led ), 
-    //     .conta  (  conta_timer_led ),
-    //     .Q  (  ),
-    //     .fim    ( fim_timer_led ),
-    //     .meio    (  )
-	//   );   
 
     // TEMPORIZADOR DO LED DE RESULTADO
     contador_m #(2000,12) temporizador_led_resultado ( 
