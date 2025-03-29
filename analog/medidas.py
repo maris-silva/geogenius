@@ -9,14 +9,16 @@ CSV_PONTUACOES = 'pontuacoes.csv'
 SLEEP_DELAY = 0.1
 
 # ARRUMAR AQUI PARA COLOCAR OS PAISES inveitei da minha cabeca kk
-POSSIVEIS_RESPOSTAS = ["Australia", "EUA", "Japao", "Africa do Sul", "Argentina", "Russia", "Australia", "Franca"]
+POSSIVEIS_RESPOSTAS = ["Argentina", "Australia", "South Africa", "Brazil", "China", "Algeria", "United States", "India"]
 
 # ARRUMAR OS PINOS DIO COM 
-DIO_START = 10  
-DIO_RESET = 11
-DIO_TIMEOUT = 12 
-DIO_ACERTOU = 13 
-DIO_ERRO = 14 
+DIO_START = 1
+DIO_RESET = 2
+DIO_CONTA_TIMEOUT = 3 # sinal conta_timeout 
+DIO_ACERTOU = 4 
+DIO_ERRO = 5
+DIO_TIMEOUT = 6 # indica que aconteceu timeout
+DIO_DIFICULDADE = 7 
 
 class AnalogGameReader:
     def __init__(self):
@@ -34,11 +36,11 @@ class AnalogGameReader:
 
     def inicializar_csvs(self):
         if not os.path.exists(CSV_RESULTADOS):
-            df = pd.DataFrame(columns=["jogo_id", "pais", "resultado"])
+            df = pd.DataFrame(columns=["jogo_id", "pais", "resultado","tempo_jogada"])
             df.to_csv(CSV_RESULTADOS, index=False)
 
         if not os.path.exists(CSV_PONTUACOES):
-            df = pd.DataFrame(columns=["jogo_id", "pontuacao_final", "tempo_total"])
+            df = pd.DataFrame(columns=["jogo_id", "pontuacao_final", "tempo_total","dificuldade"])
             df.to_csv(CSV_PONTUACOES, index=False)
 
     def read_game_results(self):
@@ -64,26 +66,29 @@ class AnalogGameReader:
                 index_pergunta = 0
                 pontuacao = 0
                 tempo_total = 0
-                tempo_inicio = None
+                tempo_inicio_jogo = time()
 
                 while index_pergunta < len(POSSIVEIS_RESPOSTAS):
-                    conta_tempo = static.get_state(device_data, DIO_TIMEOUT) 
+                    conta_tempo = static.get_state(device_data, DIO_CONTA_TIMEOUT) 
                     acertou = static.get_state(device_data, DIO_ACERTOU) 
                     errou = static.get_state(device_data, DIO_ERRO) 
-                    reset = static.get_state(device_data, DIO_RESET) 
-
-                    if reset: # adicionei aqui para se der o botao do reset 
+                    reset = static.get_state(device_data, DIO_RESET)
+                    timeout = static.get_state(device_data, DIO_TIMEOUT)
+                    dificuldade = static.get_state(device_data, DIO_DIFICULDADE)
+                    tempo_inicio_jogada = None
+                    if reset:
                         print("Jogo resetado")
                         break  
                     if conta_tempo:
-                        if tempo_inicio is None:
-                            tempo_inicio = time()  
+                        if tempo_inicio_jogada is None:
+                            tempo_inicio_jogada = time()  
                     else:
-                        if tempo_inicio is not None:
-                            tempo_total += time() - tempo_inicio
-                            tempo_inicio = None
+                        if tempo_inicio_jogada is not None:
+                            tempo_jogada = time() - tempo_inicio_jogada # conta o tempo apenas da jogada 
+                            tempo_total += tempo_jogada # incrementa no tempo total
+                            tempo_inicio_jogada = None
 
-                    if acertou or errou:
+                    if acertou or errou or timeout:
                         resultado = "Acerto" if acertou else "Erro"
                         if acertou:
                             pontuacao += 1
@@ -92,7 +97,8 @@ class AnalogGameReader:
                         novo_resultado = pd.DataFrame([{ 
                             "jogo_id": self.jogo_id, 
                             "pais": POSSIVEIS_RESPOSTAS[index_pergunta], 
-                            "resultado": resultado
+                            "resultado": resultado,
+                            "tempo_jogada": round(tempo_jogada, 3)
                         }])
                         df_resultados = pd.concat([df_resultados, novo_resultado], ignore_index=True)
                         df_resultados.to_csv(CSV_RESULTADOS, index=False)
@@ -101,12 +107,15 @@ class AnalogGameReader:
 
                     sleep(SLEEP_DELAY)
 
+
               # salvar pontuacao e tempo de jogada 
+                tempo_total = time() - tempo_inicio_jogo
                 df_pontuacoes = pd.read_csv(CSV_PONTUACOES)
                 df_pontuacoes = pd.concat([df_pontuacoes, pd.DataFrame([{ 
                     "jogo_id": self.jogo_id, 
                     "pontuacao_final": pontuacao,
-                    "tempo_total": round(tempo_total, 3)
+                    "tempo_total": round(tempo_total, 3), 
+                    "dificuldade": dificuldade # nao sei se aqui ja vem em formato 0 ou 1 ou se precisa converter 
                 }])], ignore_index=True)
                 df_pontuacoes.to_csv(CSV_PONTUACOES, index=False)
 

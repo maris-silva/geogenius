@@ -1,4 +1,6 @@
-jogo_id,pontuacao_final,tempo_total
-1,5,"10,234"
-2,4,"15,982"
-3,7,"13,982"
+jogo_id,pontuacao_final,tempo_total,dificuldade
+1,5,"10,234",1
+2,4,"15,982",0
+3,7,"13,982",1
+4,2,"12,982",0
+5,2,"14,982",1
