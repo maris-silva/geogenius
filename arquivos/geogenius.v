@@ -17,6 +17,15 @@ module geogenius (
     output [6:0] display_tempo_de_jogo_1,
     output [6:0] display_tempo_de_jogo_2,
     output [6:0] display_tempo_de_jogo_3,
+	 
+	 //saidas analog discovery
+	 output AD_jogar,
+	 output AD_reset,
+	 output AD_aguarda_jogada,
+	 output AD_acertou,
+	 output AD_errou,
+	 output AD_timeout,
+	 output AD_dificuldade,
 
 
     // saidas depuracao
@@ -29,6 +38,15 @@ module geogenius (
     
 );
 assign botoes_out = botoes;
+
+//assigns externos para o analogdiscovery fazer a analsie de dados
+assign AD_jogar = jogar;
+assign AD_reset = reset;
+assign AD_aguarda_jogada = fio_conta_timeout;
+assign AD_acertou = acertou;
+assign AD_errou = errou;
+assign AD_timeout = timeout;
+assign AD_dificuldade = dificuldade;
 
 // saidas da unidade de controle
 wire 	fio_zera_contador_jogada,
