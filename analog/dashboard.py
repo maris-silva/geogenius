@@ -88,17 +88,13 @@ with col2:
     st.plotly_chart(grafico_tempo_1)
 
 # tempo medio e jogada separados por dificuldade
-col1, col2 = st.columns(2)
-with col1:
-    st.plotly_chart(mapa)
-with col2:
-    tabela = df_pivot[['pais', 'percentual_acertos', 'tempo_medio_de_jogada']].rename(columns={
+st.plotly_chart(mapa)
+tabela = df_pivot[['pais', 'percentual_acertos', 'tempo_medio_de_jogada']].rename(columns={
         'pais': 'País',
         'percentual_acertos': 'Percentual de Acertos (%)',
         'tempo_medio_de_jogada': 'Tempo médio de jogada'
     })
-    st.write(tabela, index=False)
-
+st.write(tabela, index=False)
 st.subheader('Estatísticas por jogo')
 
 id_jogo_selecionado = st.selectbox("Selecione o jogo", df_resultados['jogo_id'].unique())
