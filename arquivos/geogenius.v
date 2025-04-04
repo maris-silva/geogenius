@@ -69,7 +69,7 @@ wire      fio_fim_timer_resultado,
       fio_fez_jogada; 
 
 wire [3:0]  fio_db_estado;
-wire [2:0]  fio_score;
+wire [3:0]  fio_score;
 
 //tempo de jogo
 wire fio_zera_tempo_de_jogo;
@@ -134,7 +134,7 @@ unidade_de_controle UC (
 
 
 hexa7seg display_score (
-   .hexa( {1'b0, fio_score} ),
+   .hexa( fio_score ),
    .display( score )
 );
 
