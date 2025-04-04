@@ -1,25 +1,176 @@
 jogo_id,pais,resultado,tempo_jogada
-1,Australia,Acerto,"1,234"
-1,Mexico,Acerto,"1,291"
-1,South Africa,Acerto,"1,248"
-1,Canada,Erro,"2,112"
-1,India,Acerto,"1,282"
-1,Egito,Erro,"2,123"
-1,Russia,Acerto,"1,234"
-1,Brazil,Erro,"1,234"
-2,Australia,Acerto,"1,234"
-2,Mexico,Erro,"0,983"
-2,South Africa,Erro,"1,893"
-2,Canada,Acerto,"2,134"
-2,India,Erro,"0,503"
-2,Egito,Erro,"1,421"
-2,Russia,Acerto,"1,234"
-2,Brazil,Acerto,"1,234"
-3,Australia,Acerto,"1,234"
-3,Mexico,Acerto,"1,234"
-3,South Africa,Acerto,"1,234"
-3,Canada,Acerto,"1,234"
-3,India,Acerto,"1,234"
-3,Egito,Acerto,"1,234"
-3,Russia,Acerto,"1,234"
-3,Brazil,Erro,"1,234"
+1,China,Acerto,1.292
+1,Australia,Acerto,0.208
+1,India,Acerto,0.231
+1,South Africa,Acerto,1.482
+1,Brazil,Acerto,0.595
+1,Algeria,Acerto,0.108
+1,United States,Acerto,0.121
+1,Argentina,Acerto,0.067
+2,China,Erro,1.209
+2,Australia,Erro,0.339
+2,India,Erro,0.724
+2,South Africa,Erro,0.288
+2,Brazil,Erro,3.123
+2,Algeria,Erro,0.223
+2,United States,Erro,0.075
+2,Argentina,Erro,0.018
+3,China,Erro,3.604
+3,Australia,Erro,0.817
+3,India,Erro,1.794
+3,South Africa,Acerto,1.167
+3,Brazil,Erro,0.211
+3,Algeria,Erro,0.346
+3,United States,Erro,0.889
+3,Argentina,Erro,0.127
+4,China,Erro,2.309
+4,Australia,Erro,0.666
+4,India,Erro,0.088
+4,South Africa,Acerto,0.136
+4,Brazil,Erro,0.133
+4,Algeria,Erro,0.205
+4,United States,Erro,0.166
+4,Argentina,Erro,1.044
+5,China,Acerto,3.944
+5,Australia,Acerto,2.405
+5,India,Acerto,1.29
+5,South Africa,Acerto,1.483
+5,Brazil,Acerto,1.541
+5,Algeria,Acerto,1.676
+5,United States,Acerto,1.147
+5,Argentina,Acerto,0.874
+6,China,Acerto,3.32
+6,Australia,Erro,2.163
+6,India,Erro,2.204
+6,South Africa,Erro,1.89
+6,Brazil,Acerto,2.354
+6,Algeria,Erro,3.043
+6,United States,Acerto,0.88
+6,Argentina,Acerto,1.276
+7,China,Acerto,3.405
+7,Australia,Acerto,2.351
+7,India,Acerto,2.235
+7,South Africa,Acerto,1.297
+7,Brazil,Acerto,3.775
+7,Algeria,Erro,4.999
+7,United States,Erro,1.903
+7,Argentina,Acerto,1.868
+8,China,Acerto,1.894
+8,Australia,Erro,4.956
+8,India,Erro,4.989
+8,South Africa,Erro,4.985
+8,Brazil,Erro,4.995
+8,Algeria,Erro,4.989
+229,China,Acerto,1.024
+229,Australia,Acerto,1.7
+229,India,Acerto,2.782
+229,South Africa,Acerto,1.365
+229,Brazil,Acerto,1.784
+229,Algeria,Acerto,1.678
+229,United States,Acerto,1.316
+229,Argentina,Acerto,1.468
+230,China,Acerto,1.503
+230,Australia,Erro,2.961
+230,India,Erro,2.985
+230,South Africa,Erro,2.994
+230,Brazil,Acerto,1.158
+230,Algeria,Erro,2.987
+230,United States,Erro,2.983
+230,Argentina,Erro,2.995
+231,China,Erro,3.034
+231,Australia,Erro,2.952
+231,India,Erro,2.986
+231,South Africa,Erro,2.99
+231,Brazil,Erro,2.991
+231,Algeria,Erro,2.993
+231,United States,Erro,2.996
+231,Argentina,Erro,2.989
+232,China,Acerto,3.347
+232,Australia,Acerto,1.381
+232,India,Acerto,1.323
+232,South Africa,Erro,1.069
+232,Brazil,Acerto,1.871
+232,Algeria,Acerto,0.806
+232,United States,Acerto,0.826
+232,Argentina,Acerto,0.649
+233,China,Acerto,2.636
+233,Australia,Erro,0.687
+233,India,Acerto,4.18
+233,South Africa,Acerto,0.931
+233,Brazil,Acerto,1.661
+233,Algeria,Acerto,0.375
+233,United States,Acerto,0.349
+233,Argentina,Acerto,0.41
+234,China,Acerto,2.555
+234,Australia,Acerto,0.342
+234,India,Acerto,0.784
+234,South Africa,Acerto,0.823
+234,Brazil,Acerto,1.671
+234,Algeria,Acerto,0.88
+234,United States,Acerto,0.454
+234,Argentina,Acerto,0.425
+443,China,Acerto,1.811
+443,Australia,Acerto,0.862
+443,India,Acerto,0.389
+443,South Africa,Acerto,1.514
+443,Brazil,Acerto,2.167
+443,Algeria,Acerto,1.582
+443,United States,Acerto,1.633
+443,Argentina,Acerto,2.33
+444,China,Erro,5.867
+444,Australia,Acerto,2.18
+444,India,Acerto,1.748
+444,South Africa,Acerto,1.193
+444,Brazil,Erro,4.751
+444,Algeria,Acerto,1.21
+444,United States,Erro,7.98
+444,Argentina,Acerto,1.589
+445,China,Acerto,1.615
+446,China,Erro,1.353
+446,Australia,Erro,2.019
+446,India,Erro,0.455
+446,South Africa,Erro,0.654
+446,Brazil,Erro,0.936
+446,Algeria,Erro,0.48
+446,United States,Acerto,1.862
+446,Argentina,Acerto,1.09
+447,China,Acerto,1.117
+447,Australia,Erro,2.762
+447,India,Erro,0.481
+447,South Africa,Acerto,0.215
+447,Brazil,Acerto,1.005
+447,Algeria,Acerto,2.522
+447,United States,Acerto,2.237
+447,Argentina,Acerto,1.682
+448,China,Erro,2.684
+448,Australia,Erro,0.264
+448,India,Erro,0.637
+448,South Africa,Acerto,0.423
+448,Brazil,Erro,0.025
+448,Algeria,Erro,0.547
+448,United States,Acerto,0.029
+448,Argentina,Acerto,0.275
+449,China,Acerto,3.99
+449,Australia,Acerto,4.572
+449,India,Erro,4.586
+449,South Africa,Erro,7.981
+449,Brazil,Acerto,4.908
+449,Algeria,Acerto,2.228
+449,United States,Erro,3.255
+449,Argentina,Acerto,1.854
+450,China,Acerto,3.71
+450,Australia,Acerto,2.403
+450,India,Acerto,1.333
+450,South Africa,Acerto,2.64
+450,Brazil,Acerto,2.169
+450,Algeria,Acerto,2.854
+450,United States,Erro,1.307
+450,Argentina,Acerto,1.755
+451,China,Erro,1.523
+451,Australia,Erro,2.981
+451,India,Acerto,1.53
+451,South Africa,Acerto,1.397
+451,Brazil,Acerto,1.386
+451,Algeria,Acerto,1.482
+451,United States,Acerto,2.178
+451,Argentina,Acerto,1.584

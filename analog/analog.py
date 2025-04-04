@@ -1,3 +1,3 @@
-from analog_reader import AnalogReader
+from medicoes import AnalogGameReader
 
 analog = AnalogReader()

@@ -32,7 +32,7 @@ mapa = px.choropleth(df_pivot,
                      labels={'percentual_acertos': 'Percentual de Acertos (%)'},
                      title='Mapa de Percentual de Acertos por País')
 
-df_pontuacao['tempo_medio'] = df_pontuacao['tempo_total'].apply(lambda x: float(x.replace(",", ".")) / 8)
+df_pontuacao['tempo_medio'] = df_pontuacao['tempo_total'].apply(lambda x: x / 8)
 def gerar_graficos_por_dificuldade(dificuldade):
     df_dificuldade = df_pontuacao[df_pontuacao['dificuldade'] == dificuldade]
     
